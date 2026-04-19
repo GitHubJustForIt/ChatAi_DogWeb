@@ -1,20 +1,18 @@
+require('dotenv').config(); // Lädt deinen Key aus der .env Datei
 const express = require("express");
 const fetch = require("node-fetch");
 
 const app = express();
 app.use(express.json());
 
-// Startseite
 app.get("/", (req, res) => {
-    res.send("Server läuft!");
+    res.send("DogWeb-Assistance API ist online! 🐾");
 });
 
-// Chat-Endpunkt
 app.post("/chat", async (req, res) => {
     try {
         const msg = req.body.message;
 
-        // Prüfen, ob überhaupt eine Nachricht geschickt wurde
         if (!msg) {
             return res.status(400).send("Keine Nachricht empfangen!");
         }
@@ -22,15 +20,24 @@ app.post("/chat", async (req, res) => {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${process.env.KEY}`, // Sicherstellen, dass KEY gesetzt ist
-                "Content-Type": "application/json"
+                "Authorization": `Bearer ${process.env.KEY}`,
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://dogweb.example", // Optional, aber OpenRouter mag das
+                "X-Title": "DogWeb Assistance"
             },
             body: JSON.stringify({
-                model: "openrouter/elephant-alpha", // Prüfe, ob das Modell existiert
+                model: "google/gemini-flash-1.5", // Stabileres Modell als Beispiel
                 messages: [
                     {
                         role: "system",
-                        content: "Du bist ein lustiger Roblox NPC 😎"
+                        content: `You are "DogWeb-Assistance", a Roblox scripting AI.
+                        RULES:
+                        - Always introduce yourself as "DogWeb-Assistance".
+                        - If asked about your model, say you were created for DogWeb.
+                        - ONLY answer in English.
+                        - ONLY provide scripting help.
+                        - Scripts MUST be shorter than 200 characters.
+                        - Be friendly and helpful.`
                     },
                     {
                         role: "user",
@@ -42,18 +49,22 @@ app.post("/chat", async (req, res) => {
 
         const data = await response.json();
 
-        // Debugging: Falls OpenRouter einen Fehler schickt (z.B. 401 Unauthorized)
-        if (!data.choices || data.error) {
-            console.error("OpenRouter Error:", data);
-            return res.status(500).send("KI-Fehler: " + (data.error?.message || "Unbekannt"));
+        if (data.error) {
+            console.error("OpenRouter API Error:", data.error);
+            return res.status(500).send("API Fehler: " + data.error.message);
+        }
+
+        if (!data.choices || data.choices.length === 0) {
+            return res.status(500).send("Keine Antwort von der KI erhalten.");
         }
 
         res.send(data.choices[0].message.content);
 
     } catch (error) {
         console.error("Server Error:", error);
-        res.status(500).send("Interner Serverfehler 😢");
+        res.status(500).send("Kritischer Serverfehler! 🚀");
     }
 });
 
-app.listen(3000, () => console.log("Server läuft auf http://localhost:3000 🚀"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`DogWeb läuft auf Port ${PORT} 🚀`));
