@@ -18,7 +18,7 @@ app.post("/chat", async (req, res) => {
             messages: [
                 {
                     role: "system",
-                    content: "Du bist ein Roblox NPC. Antworte kurz und cool."
+                    content: "Du bist ein lustiger Roblox NPC 😎"
                 },
                 {
                     role: "user",
