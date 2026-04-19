@@ -5,13 +5,17 @@ const fs = require("fs");
 const app = express();
 app.use(express.json());
 
-// Load rules synchronously at startup or wrap in a more robust handler
+const path = require("path");
+
 let rules = "";
-try {
-    rules = fs.readFileSync("./rules.txt", "utf8");
-} catch (err) {
-    console.error("Could not load rules.txt:", err.message);
-    rules = "You are a helpful assistant."; // Fallback
+const rulesPath = path.join(__dirname, "rules.txt");
+
+if (fs.existsSync(rulesPath)) {
+    rules = fs.readFileSync(rulesPath, "utf8");
+    console.log("✅ rules.txt erfolgreich geladen");
+} else {
+    console.warn("⚠️ rules.txt wurde nicht gefunden! Benutze Standard-Prompt.");
+    rules = "Du bist ein hilfreicher Assistent."; 
 }
 
 app.get("/", (req, res) => {
