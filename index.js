@@ -41,7 +41,7 @@ app.post("/chat", async (req, res) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+                model: "liquid/lfm-2.5-1.2b-thinking:free",
                 messages: [
                     {
                         role: "system",
