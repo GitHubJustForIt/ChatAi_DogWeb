@@ -19,7 +19,7 @@ app.post("/chat", async (req, res) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            model: "openrouter/free",
+            model: "openrouter/elephant-alpha",
             messages: [
                 {
                     role: "system",
@@ -34,6 +34,13 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
+
+    // Debug falls Fehler
+    if (!data.choices) {
+        console.log(data);
+        return res.send("Fehler bei KI 😢");
+    }
+
     res.send(data.choices[0].message.content);
 });
 
