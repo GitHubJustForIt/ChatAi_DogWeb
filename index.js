@@ -41,7 +41,7 @@ app.post("/chat", async (req, res) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "openrouter/elephant-alpha",
+                model: "nvidia/llama-nemotron-embed-vl-1b-v2:free",
                 messages: [
                     {
                         role: "system",
