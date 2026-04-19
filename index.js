@@ -1,12 +1,12 @@
-app.get("/", (req, res) => {
-    res.send("Server läuft!");
-});
-
 const express = require("express");
 const fetch = require("node-fetch");
 
 const app = express();
 app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Server läuft!");
+});
 
 app.post("/chat", async (req, res) => {
     const msg = req.body.message;
