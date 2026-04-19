@@ -1,14 +1,28 @@
-require('dotenv').config(); // Lädt deinen Key aus der .env Datei
 const express = require("express");
 const fetch = require("node-fetch");
+const fs = require("fs"); // Modul zum Lesen von Dateien hinzufügen
+const path = require("path");
 
 const app = express();
 app.use(express.json());
 
+// Funktion zum Laden der Regeln
+function getRules() {
+    try {
+        // Liest die rules.txt im selben Verzeichnis aus
+        return fs.readFileSync(path.join(__dirname, "rules.txt"), "utf8");
+    } catch (err) {
+        console.error("Fehler beim Lesen der rules.txt:", err);
+        return ""; // Falls Datei fehlt, wird ein leerer String genutzt
+    }
+}
+
+// Startseite
 app.get("/", (req, res) => {
-    res.send("DogWeb-Assistance API ist online! 🐾");
+    res.send("Server läuft!");
 });
 
+// Chat-Endpunkt
 app.post("/chat", async (req, res) => {
     try {
         const msg = req.body.message;
@@ -17,27 +31,22 @@ app.post("/chat", async (req, res) => {
             return res.status(400).send("Keine Nachricht empfangen!");
         }
 
+        // Regeln dynamisch bei jedem Request laden (oder einmalig oben speichern)
+        const rules = getRules();
+
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${process.env.KEY}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://dogweb.example", // Optional, aber OpenRouter mag das
-                "X-Title": "DogWeb Assistance"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "google/gemini-flash-1.5", // Stabileres Modell als Beispiel
+                model: "openrouter/elephant-alpha",
                 messages: [
                     {
                         role: "system",
-                        content: `You are "DogWeb-Assistance", a Roblox scripting AI.
-                        RULES:
-                        - Always introduce yourself as "DogWeb-Assistance".
-                        - If asked about your model, say you were created for DogWeb.
-                        - ONLY answer in English.
-                        - ONLY provide scripting help.
-                        - Scripts MUST be shorter than 200 characters.
-                        - Be friendly and helpful.`
+                        // Wir kombinieren den NPC-Charakter mit den Regeln aus der Datei
+                        content: `Du bist ein lustiger Roblox NPC 😎. Hier sind deine Verhaltensregeln: ${rules}`
                     },
                     {
                         role: "user",
@@ -49,22 +58,17 @@ app.post("/chat", async (req, res) => {
 
         const data = await response.json();
 
-        if (data.error) {
-            console.error("OpenRouter API Error:", data.error);
-            return res.status(500).send("API Fehler: " + data.error.message);
-        }
-
-        if (!data.choices || data.choices.length === 0) {
-            return res.status(500).send("Keine Antwort von der KI erhalten.");
+        if (!data.choices || data.error) {
+            console.error("OpenRouter Error:", data);
+            return res.status(500).send("KI-Fehler: " + (data.error?.message || "Unbekannt"));
         }
 
         res.send(data.choices[0].message.content);
 
     } catch (error) {
         console.error("Server Error:", error);
-        res.status(500).send("Kritischer Serverfehler! 🚀");
+        res.status(500).send("Interner Serverfehler 😢");
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`DogWeb läuft auf Port ${PORT} 🚀`));
+app.listen(3000, () => console.log("Server läuft auf http://localhost:3000 🚀"));
