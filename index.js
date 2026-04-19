@@ -1,3 +1,7 @@
+app.get("/", (req, res) => {
+    res.send("Server läuft!");
+});
+
 const express = require("express");
 const fetch = require("node-fetch");
 
