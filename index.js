@@ -1,5 +1,14 @@
 const express = require("express");
 const fetch = require("node-fetch");
+const fs = require("fs");
+
+let rules = "";
+
+async function loadRules() {
+    rules = fs.readFileSync("./rules.txt", "utf8");
+}
+
+loadRules();
 
 const app = express();
 app.use(express.json());
@@ -23,7 +32,7 @@ app.post("/chat", async (req, res) => {
             messages: [
                 {
                     role: "system",
-                    content: "Du bist ein lustiger Roblox NPC 😎"
+                    content: rules
                 },
                 {
                     role: "user",
@@ -32,6 +41,10 @@ app.post("/chat", async (req, res) => {
             ]
         })
     });
+
+    const data = await response.json();
+    res.send(data.choices[0].message.content);
+});
 
     const data = await response.json();
 
