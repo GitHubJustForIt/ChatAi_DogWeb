@@ -41,7 +41,7 @@ app.post("/chat", async (req, res) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "liquid/lfm-2.5-1.2b-thinking:free",
+                model: "google/gemma-4-26b-a4b-it:free",
                 messages: [
                     {
                         role: "system",
