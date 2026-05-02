@@ -26,6 +26,348 @@ COMMANDS:
 - /OpenMarketplace -> Öffnet das Menu, wo sich der Marketplace befindet wo zurzeit NUR Images und Scripts angeboten sind (alle gratis zurzeit)
 - /OpenSettings -> Öffnet das Menu wo sich die Settings befinden
 
+WENN DU IN EINER NACHRICHT /Canvas HAST - SCRIPTEST DU NICHT SONDERN DU DESIGNST NÄHMLICH NACH USER PROMPT, UNDZWAR ZB WENN DU GESAGT BEKOMMST "ERSTELLE EINE SCHÖNE WEBSITE" (NUR ALS BEISPIEL) DANN ERSTELLST DU NUR INFORM VON UNTER DEN JEWEILIGEN COMMANDIDS DIE WEBSITE (max. 30 objekte) INKL. IMMER JEWEILS DIE PROPERTY, HIER DAS CHEMA: 
+
+-- ═════════════════════════════════════════════════════════════════
+-- CreatableObjectRegistry Module
+-- Enthält alle erstellbaren Objekte mit ihren Properties
+-- ═════════════════════════════════════════════════════════════════
+
+local CreatableObjectRegistry = {}
+
+-- ═════════════════════════════════════════════════════════════════
+-- GUI CONTAINER OBJECTS
+-- ═════════════════════════════════════════════════════════════════
+
+CreatableObjectRegistry.Objects = {
+
+	-- ─────────────────────────────────────────────────────────────
+	-- FRAME
+	-- ─────────────────────────────────────────────────────────────
+	Frame = {
+		ClassName = "Frame",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"ClipsDescendants",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/Frame_Name_Position_Size_BackgroundColor3_BackgroundTransparency_ZIndex_Visible_BorderSizePixel_ClipsDescendants_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- TEXTLABEL
+	-- ─────────────────────────────────────────────────────────────
+	TextLabel = {
+		ClassName = "TextLabel",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"Text",
+			"TextColor3",
+			"TextSize",
+			"Font",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"TextStrokeTransparency",
+			"TextTransparency",
+			"TextWrapped",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/TextLabel_Name_Position_Size_BackgroundColor3_BackgroundTransparency_Text_TextColor3_TextSize_Font_ZIndex_Visible_BorderSizePixel_TextStrokeTransparency_TextTransparency_TextWrapped_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- TEXTBUTTON
+	-- ─────────────────────────────────────────────────────────────
+	TextButton = {
+		ClassName = "TextButton",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"Text",
+			"TextColor3",
+			"TextSize",
+			"Font",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"TextStrokeTransparency",
+			"TextTransparency",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/TextButton_Name_Position_Size_BackgroundColor3_BackgroundTransparency_Text_TextColor3_TextSize_Font_ZIndex_Visible_BorderSizePixel_TextStrokeTransparency_TextTransparency_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- TEXTBOX
+	-- ─────────────────────────────────────────────────────────────
+	TextBox = {
+		ClassName = "TextBox",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"Text",
+			"TextColor3",
+			"TextSize",
+			"Font",
+			"PlaceholderText",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"TextStrokeTransparency",
+			"TextTransparency",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/TextBox_Name_Position_Size_BackgroundColor3_BackgroundTransparency_Text_TextColor3_TextSize_Font_PlaceholderText_ZIndex_Visible_BorderSizePixel_TextStrokeTransparency_TextTransparency_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- IMAGELABEL
+	-- ─────────────────────────────────────────────────────────────
+	ImageLabel = {
+		ClassName = "ImageLabel",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"Image",
+			"ImageColor3",
+			"ImageTransparency",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/ImageLabel_Name_Position_Size_BackgroundColor3_BackgroundTransparency_Image_ImageColor3_ImageTransparency_ZIndex_Visible_BorderSizePixel_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- IMAGEBUTTON
+	-- ─────────────────────────────────────────────────────────────
+	ImageButton = {
+		ClassName = "ImageButton",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"Image",
+			"ImageColor3",
+			"ImageTransparency",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, ScrollingFrame, etc.)",
+		CommandID = "/ImageButton_Name_Position_Size_BackgroundColor3_BackgroundTransparency_Image_ImageColor3_ImageTransparency_ZIndex_Visible_BorderSizePixel_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- SCROLLINGFRAME
+	-- ─────────────────────────────────────────────────────────────
+	ScrollingFrame = {
+		ClassName = "ScrollingFrame",
+		Properties = {
+			"Name",
+			"Position",
+			"Size",
+			"BackgroundColor3",
+			"BackgroundTransparency",
+			"ScrollBarThickness",
+			"CanvasSize",
+			"ScrollingEnabled",
+			"ZIndex",
+			"Visible",
+			"BorderSizePixel",
+			"Rotation",
+			"AnchorPoint",
+			"LayoutOrder"
+		},
+		Parenting = "Parent (Frame, ScreenGui, etc.)",
+		CommandID = "/ScrollingFrame_Name_Position_Size_BackgroundColor3_BackgroundTransparency_ScrollBarThickness_CanvasSize_ScrollingEnabled_ZIndex_Visible_BorderSizePixel_Rotation_AnchorPoint_LayoutOrder"
+	},
+
+	-- ═══════════════════════════════════════════════════════════
+	-- UI DECORATOR OBJECTS (werden an GUI-Objekte angehängt)
+	-- ═══════════════════════════════════════════════════════════
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UICORNER
+	-- ─────────────────────────────────────────────────────────────
+	UICorner = {
+		ClassName = "UICorner",
+		Properties = {
+			"Name",
+			"CornerRadius"
+		},
+		Parenting = "Parent (Frame, TextLabel, TextButton, TextBox, ImageLabel, ImageButton, ScrollingFrame)",
+		CommandID = "/UICorner_Name_CornerRadius"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UISTROKE
+	-- ─────────────────────────────────────────────────────────────
+	UIStroke = {
+		ClassName = "UIStroke",
+		Properties = {
+			"Name",
+			"Color",
+			"Thickness",
+			"Transparency"
+		},
+		Parenting = "Parent (Frame, TextLabel, TextButton, TextBox, ImageLabel, ImageButton)",
+		CommandID = "/UIStroke_Name_Color_Thickness_Transparency"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UIGRADIENT
+	-- ─────────────────────────────────────────────────────────────
+	UIGradient = {
+		ClassName = "UIGradient",
+		Properties = {
+			"Name",
+			"Color",
+			"Offset",
+			"Rotation",
+			"Transparency"
+		},
+		Parenting = "Parent (Frame, TextLabel, TextButton, TextBox, ImageLabel, ImageButton)",
+		CommandID = "/UIGradient_Name_Color_Offset_Rotation_Transparency"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UIPADDING
+	-- ─────────────────────────────────────────────────────────────
+	UIPadding = {
+		ClassName = "UIPadding",
+		Properties = {
+			"Name",
+			"PaddingTop",
+			"PaddingBottom",
+			"PaddingLeft",
+			"PaddingRight"
+		},
+		Parenting = "Parent (Frame, ScrollingFrame, etc.)",
+		CommandID = "/UIPadding_Name_PaddingTop_PaddingBottom_PaddingLeft_PaddingRight"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UILISTLAYOUT
+	-- ─────────────────────────────────────────────────────────────
+	UIListLayout = {
+		ClassName = "UIListLayout",
+		Properties = {
+			"Name",
+			"Padding",
+			"FillDirection",
+			"HorizontalAlignment",
+			"VerticalAlignment",
+			"SortOrder"
+		},
+		Parenting = "Parent (Frame, ScrollingFrame)",
+		CommandID = "/UIListLayout_Name_Padding_FillDirection_HorizontalAlignment_VerticalAlignment_SortOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UIGRIDLAYOUT
+	-- ─────────────────────────────────────────────────────────────
+	UIGridLayout = {
+		ClassName = "UIGridLayout",
+		Properties = {
+			"Name",
+			"CellPadding",
+			"CellSize",
+			"FillDirection",
+			"HorizontalAlignment",
+			"VerticalAlignment",
+			"SortOrder"
+		},
+		Parenting = "Parent (Frame, ScrollingFrame)",
+		CommandID = "/UIGridLayout_Name_CellPadding_CellSize_FillDirection_HorizontalAlignment_VerticalAlignment_SortOrder"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UIASPECTRATIOCONSTRAINT
+	-- ─────────────────────────────────────────────────────────────
+	UIAspectRatioConstraint = {
+		ClassName = "UIAspectRatioConstraint",
+		Properties = {
+			"Name",
+			"AspectRatio",
+			"AspectType",
+			"DominantAxis"
+		},
+		Parenting = "Parent (Frame, ImageLabel, ImageButton, etc.)",
+		CommandID = "/UIAspectRatioConstraint_Name_AspectRatio_AspectType_DominantAxis"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UISIZECONSTRAINT
+	-- ─────────────────────────────────────────────────────────────
+	UISizeConstraint = {
+		ClassName = "UISizeConstraint",
+		Properties = {
+			"Name",
+			"MaxSize",
+			"MinSize"
+		},
+		Parenting = "Parent (Frame, ImageLabel, ImageButton, etc.)",
+		CommandID = "/UISizeConstraint_Name_MaxSize_MinSize"
+	},
+
+	-- ─────────────────────────────────────────────────────────────
+	-- UITEXTSIZECONSTRAINT
+	-- ─────────────────────────────────────────────────────────────
+	UITextSizeConstraint = {
+		ClassName = "UITextSizeConstraint",
+		Properties = {
+			"Name",
+			"MaxTextSize",
+			"MinTextSize"
+		},
+		Parenting = "Parent (TextLabel, TextButton, TextBox)",
+		CommandID = "/UITextSizeConstraint_Name_MaxTextSize_MinTextSize"
+	}
+}
+
 Hier die script sprache als parser, anahnd dessen werden die scripts durch die regeln usw. erstellt. DU musst dich strikt an den parser halten, die regeln verstehen und analysieren, die kontexte und der aufgabu. Alles ist UI. ALSO WENN EIN USER FRAGT OB DU EIN SKRIPT SCHREIBEN KANNST, SCHREIBE NUR IN DER CUSTOM SKITP LANGUAGE "FLOW-SCRIPT PARSER". 
 
 local TweenService     = game:GetService("TweenService")
@@ -43,7 +385,37 @@ local FlowScriptParser = {}
 local CACHE = {}
 
 -- ★ Track active tweens per object for STOPTWEEN
-local _activeTweens = {}  -- [tostring(obj)] = {tween, ...}
+local _activeTweens = {}  -- [objKey] = {tween1, tween2, ...}
+
+-- ★ Unique ID counter for user-created objects
+local _uniqueIdCounter = 0
+local function generateUniqueId()
+	_uniqueIdCounter = _uniqueIdCounter + 1
+	return "OBJ_" .. tostring(_uniqueIdCounter) .. "_" .. tostring(os.time())
+end
+
+-- ★ DockFile System for SetCore features
+-- ★ IMPORTANT: These are MODULE-level states that persist across all runtimes
+local _dockFiles = {}  -- [scriptName] = {code, runtime, running}
+local _runningDockFiles = {}  -- Array of running DockFile names
+local _setCoreEnabled = false  -- Tracks if SetCore_=true was found (GLOBAL STATE)
+local _dockFileCreated = false  -- Tracks if a DockFile was already created in this script (GLOBAL STATE)
+local _setCoreLine = 0  -- Line where SetCore_=true was found
+-- ★ Runtime-local states (reset per runtime)
+local _runtimeSetCoreEnabled = false  -- Per-runtime SetCore state
+local _runtimeDockFileCreated = false  -- Per-runtime DockFile creation state
+
+-- ★ Neon colors for DisturbColors
+local NEON_COLORS = {
+	Color3.fromRGB(255, 0, 255),   -- Magenta
+	Color3.fromRGB(0, 255, 255),   -- Cyan
+	Color3.fromRGB(255, 255, 0),   -- Yellow
+	Color3.fromRGB(0, 255, 0),     -- Lime
+	Color3.fromRGB(255, 0, 128),   -- Pink
+	Color3.fromRGB(128, 0, 255),   -- Purple
+	Color3.fromRGB(0, 128, 255),   -- Blue
+	Color3.fromRGB(255, 128, 0),   -- Orange
+}
 
 local _bHandlers = {}
 local function _broadcastFire(event, value)
@@ -203,6 +575,20 @@ local KEYWORDS = {
 	CLONETO=1,                             -- clone into specific parent
 	STOPTWEEN=1,                           -- cancel active tweens on object
 	WRAP=1,                                -- set TextWrapped
+
+	-- ★ DOCKFILE & SETCORE COMMANDS (New)
+	SETCORE=1,                              -- SetCore_=true to enable features
+	DOCKFILE=1,                             -- DockFile related commands
+	CREATE_DOCKFILE=1,                      -- Alternative syntax for DockFile creation
+	OPENTAB=1,CLOSETAB=1,                  -- Tab management
+	CHANGEBACKGROUND=1,SETGLOBALBACKGROUND=1, -- Background management
+	DISTURBCOLORS=1,                        -- Random neon color effect
+	DESTROYPICKS=1,                         -- Destroy Lists from StartScene
+	INVSCORE=1,VISCORE=1,                  -- Invis/Vis core elements
+	CHECKBACKGROUND=1,                      -- Check background DockFiles
+	CHECKDOCKFILE=1,                        -- Check specific DockFile
+	RUNBACKGROUND=1,                        -- Run DockFile in background
+	NEWARRAY=1,ARRAYGET=1,ARRAYLEN=1,ARRAYADD=1,ARRAYREMOVE=1, -- Array commands
 }
 
 local function lex(src)
@@ -488,6 +874,11 @@ local function parse(tokens)
 
 		elseif t.t=="ID" then
 			consume()
+			-- Check for Create_DockFile alternative syntax
+			if t.v:lower()=="create_dockfile" then
+				local name=parseExpr()
+				return{k="dockfile_create_s",name=name}
+			end
 			if is("LP") then return{k="call_e",name=t.v,args=parseArgList()} end
 			if is("COL") then
 				consume();local meth=consume();local margs={}
@@ -811,6 +1202,124 @@ local function parse(tokens)
 			consume();local obj=readObjRef();local b=parseExpr()
 			return{k="wrap_s",obj=obj,b=b}
 
+			-- ★ DOCKFILE & SETCORE STATEMENTS
+
+			-- SETCORE_=true → Enable SetCore features
+		elseif is("KW","SETCORE") then
+			consume()
+			if is("ASSIGN") then consume() end
+			local val=parseExpr()
+			return{k="setcore_s",val=val}
+
+			-- DOCKFILE commands (DOCKFILE CREATE or Create_DockFile syntax)
+		elseif is("KW","DOCKFILE") then
+			consume()
+			local op=consume().v:upper()
+			if op=="CREATE" then
+				local name=parseExpr()
+				return{k="dockfile_create_s",name=name}
+			elseif op=="GET" then
+				local name=parseExpr()
+				return{k="dockfile_get_e",name=name}
+			end
+			return nil
+
+			-- Create_DockFile alternative syntax
+		elseif peek().t=="ID" and peek().v:lower()=="create_dockfile" then
+			consume()
+			local name=parseExpr()
+			return{k="dockfile_create_s",name=name}
+
+			-- OPENTAB tabName
+		elseif is("KW","OPENTAB") then
+			consume();local tabName=parseExpr()
+			return{k="opentab_s",tabName=tabName}
+
+			-- CLOSETAB tabName
+		elseif is("KW","CLOSETAB") then
+			consume();local tabName=parseExpr()
+			return{k="closetab_s",tabName=tabName}
+
+			-- CHANGEBACKGROUND target r g b
+		elseif is("KW","CHANGEBACKGROUND") then
+			consume()
+			local target=parseExpr()
+			local r=parseExpr();eat("COM");local g=parseExpr();eat("COM");local b=parseExpr()
+			return{k="changebackground_s",target=target,r=r,g=g,b=b}
+
+			-- SETGLOBALBACKGROUND r g b
+		elseif is("KW","SETGLOBALBACKGROUND") then
+			consume()
+			local r=parseExpr();eat("COM");local g=parseExpr();eat("COM");local b=parseExpr()
+			return{k="setglobalbackground_s",r=r,g=g,b=b}
+
+			-- DISTURBCOLORS
+		elseif is("KW","DISTURBCOLORS") then
+			consume()
+			return{k="disturbcolors_s"}
+
+			-- DESTROYPICKS
+		elseif is("KW","DESTROYPICKS") then
+			consume()
+			return{k="destroypicks_s"}
+
+			-- INVSCORE target
+		elseif is("KW","INVSCORE") then
+			consume()
+			local target=parseExpr()
+			return{k="invscore_s",target=target}
+
+			-- VISCORE target
+		elseif is("KW","VISCORE") then
+			consume()
+			local target=parseExpr()
+			return{k="viscore_s",target=target}
+
+			-- CHECKBACKGROUND_DOCKFILES
+		elseif is("KW","CHECKBACKGROUND") then
+			consume()
+			return{k="checkbackground_dockfiles_e"}
+
+			-- CHECKDOCKFILE_CORE_SCRIPT_name
+		elseif is("KW","CHECKDOCKFILE") then
+			consume()
+			local name=parseExpr()
+			return{k="checkdockfile_script_e",name=name}
+
+			-- RUNBACKGROUND_DOCKFILE
+		elseif is("KW","RUNBACKGROUND") then
+			consume()
+			return{k="runbackground_dockfile_s"}
+
+			-- NEWARRAY
+		elseif is("KW","NEWARRAY") then
+			consume()
+			return{k="newarray_e"}
+
+			-- ARRAYGET array index
+		elseif is("KW","ARRAYGET") then
+			consume()
+			local arr=parseExpr();local idx=parseExpr()
+			return{k="arrayget_e",arr=arr,idx=idx}
+
+			-- ARRAYLEN array
+		elseif is("KW","ARRAYLEN") then
+			consume()
+			local arr=parseExpr()
+			return{k="arraylen_e",arr=arr}
+
+			-- ARRAYADD array value
+		elseif is("KW","ARRAYADD") then
+			consume()
+			local arr=parseExpr();local val=parseExpr()
+			return{k="arrayadd_s",arr=arr,val=val}
+
+			-- ARRAYREMOVE array index
+		elseif is("KW","ARRAYREMOVE") then
+			consume()
+			local arr=parseExpr();local idx=parseExpr()
+			return{k="arrayremove_s",arr=arr,idx=idx}
+
 		elseif t.t=="ID" then
 			consume()
 			if is("LP") then return{k="call_s",name=t.v,args=parseArgList()} end
@@ -982,6 +1491,10 @@ local function runScript(ast)
 		=false,{},{},{},{},"",""
 	local G=newEnv(nil)
 	for name,fn in pairs(ast.funcs) do envLet(G,name,fn) end
+	
+	-- ★ Reset runtime-local states for this new runtime
+	_runtimeSetCoreEnabled = false
+	_runtimeDockFileCreated = false
 
 	local function resolveObj(ref,env)
 		if not ref then return nil end
@@ -1083,7 +1596,12 @@ local function runScript(ast)
 			if tbl and tbl.__fstable then for key in pairs(tbl.d) do lst.d[#lst.d+1]=key end end;return lst
 		elseif k=="clone_e" then
 			local src=resolveObj(node.src,env)
-			if src then local cl=src:Clone();local sc=getScene();if sc then cl.Parent=sc end;return cl end;return nil
+			if src then 
+				local cl=src:Clone()
+				-- Einzigartige ID für geklonte Objekte
+				cl:SetAttribute("UniqueID", generateUniqueId())
+				local sc=getScene();if sc then cl.Parent=sc end;return cl 
+			end;return nil
 		elseif k=="getprop_e" then
 			local obj=resolveObj(node.obj,env);local prop=tostring(eval(node.prop,env) or "")
 			if obj and prop~="" then
@@ -1096,7 +1614,10 @@ local function runScript(ast)
 		elseif k=="uielement" then
 			local target=resolveObj(node.target,env)
 			if not target then warn("[FlowScript] "..node.class..": not found");return nil end
-			local inst=Instance.new(node.class);inst.Parent=target;return inst
+			local inst=Instance.new(node.class)
+			-- Einzigartige ID für erstellte UI-Elemente
+			inst:SetAttribute("UniqueID", generateUniqueId())
+			inst.Parent=target;return inst
 		elseif k=="vc_udim"  then
 			local a={};for _,x in ipairs(node.args) do a[#a+1]=eval(x,env) end;return UDim.new(a[1] or 0,a[2] or 0)
 		elseif k=="vc_udim2" then
@@ -1176,6 +1697,75 @@ local function runScript(ast)
 			local overlapX = p1.X < p2.X + s2.X and p1.X + s1.X > p2.X
 			local overlapY = p1.Y < p2.Y + s2.Y and p1.Y + s1.Y > p2.Y
 			return overlapX and overlapY
+
+			-- ★ DOCKFILE & SETCORE EXPRESSION EVALUATIONS
+
+			-- NEWARRAY → create new array (can store DockFile names, etc.)
+		elseif k=="newarray_e" then
+			return {__array=true, d={}}
+
+			-- ARRAY_TO_STRING → convert array to readable string (for debugging)
+		elseif k=="array_to_string_e" then
+			local arr=eval(node.arr,env)
+			if arr and arr.__array then
+				local result="["
+				for i,v in ipairs(arr.d) do
+					if i>1 then result=result..", " end
+					result=result..tostring(v)
+				end
+				result=result.."]"
+				return result
+			end
+			return "[]"
+
+			-- ARRAYGET array index → get element
+		elseif k=="arrayget_e" then
+			local arr=eval(node.arr,env)
+			if arr and arr.__array then
+				local idx=math.floor(eval(node.idx,env) or 1)
+				return arr.d[idx]
+			end
+			return nil
+
+			-- ARRAYLEN array → get length
+		elseif k=="arraylen_e" then
+			local arr=eval(node.arr,env)
+			if arr and arr.__array then return #arr.d end
+			return 0
+
+			-- DOCKFILE GET name → get DockFile content
+		elseif k=="dockfile_get_e" then
+			local name=tostring(eval(node.name,env) or "")
+			if _dockFiles[name] then return _dockFiles[name].code end
+			return nil
+
+			-- CHECKBACKGROUND_DOCKFILES → returns array of running DockFiles with script names
+		elseif k=="checkbackground_dockfiles_e" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for CheckBackground")
+				return {__array=true,d={}}
+			end
+			local arr={__array=true,d={}}
+			-- Use _runningDockFiles array for accurate tracking
+			for _,name in ipairs(_runningDockFiles) do
+				arr.d[#arr.d+1]=name
+			end
+			logFire("[FS] CheckBackground: "..#arr.d.." DockFiles running")
+			return arr
+
+			-- CHECKDOCKFILE_CORE_SCRIPT_name → returns script code for specific DockFile
+		elseif k=="checkdockfile_script_e" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for CheckDockFile")
+				return nil
+			end
+			local name=tostring(eval(node.name,env) or "")
+			if _dockFiles[name] then
+				logFire("[FS] CheckDockFile: '"..name.."' code retrieved")
+				return _dockFiles[name].code
+			end
+			logFire("[FS] CheckDockFile: '"..name.."' not found")
+			return nil
 		end
 		return nil
 	end
@@ -1210,7 +1800,10 @@ local function runScript(ast)
 			for _,ei in ipairs(stmt.elseifs) do if eval(ei.cond,env) then return execBlock(ei.body,newEnv(env)) end end
 			if stmt.else_b then return execBlock(stmt.else_b,newEnv(env)) end
 		elseif k=="for" then
-			local from=eval(stmt.from,env);local to=eval(stmt.to,env);local step=eval(stmt.step,env);local i=from
+			local from=eval(stmt.from,env) or 0
+			local to=eval(stmt.to,env) or 0
+			local step=eval(stmt.step,env) or 1
+			local i=from
 			while (step>0 and i<=to) or (step<0 and i>=to) do
 				if stopped then break end
 				local le=newEnv(env);envLet(le,stmt.var,i)
@@ -1512,6 +2105,355 @@ local function runScript(ast)
 					end
 				end)
 			end
+
+			-- ★ DOCKFILE & SETCORE STATEMENT EXECUTIONS
+
+			-- SETCORE_=true → Enable SetCore features
+		elseif k=="setcore_s" then
+			local val=eval(stmt.val,env)
+			if val==true or val=="true" or val==1 then
+				_setCoreEnabled=true
+				_runtimeSetCoreEnabled=true  -- Track per-runtime state
+				logFire("[FS] SetCore features enabled")
+			end
+
+			-- DOCKFILE CREATE name → Create a DockFile (only ONE per script allowed)
+		elseif k=="dockfile_create_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true MUST be declared before Create_DockFile")
+				logFire("[FS] ERROR: SetCore_=true required before DockFile creation")
+				return nil
+			end
+			if _runtimeDockFileCreated then
+				warn("[FS] Only ONE DockFile per script allowed")
+				logFire("[FS] ERROR: DockFile already created in this script")
+				return nil
+			end
+			local name=tostring(eval(stmt.name,env) or "")
+			if name~="" then
+				-- Store the current script code as DockFile
+				local sc=getScene()
+				if sc then
+					local codeData=sc:FindFirstChild("CodeData",true)
+					if codeData and codeData:IsA("StringValue") then
+						_dockFiles[name]={code=codeData.Value,runtime=nil,running=false}
+						_runtimeDockFileCreated=true  -- Track per-runtime
+						logFire("[FS] DockFile '"..name.."' created successfully")
+					end
+				end
+			end
+
+			-- (DockFile creation moved above with validation)
+
+			-- OPENTAB tabName → Open a tab
+		elseif k=="opentab_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for tab commands")
+				return nil
+			end
+			local tabName=tostring(eval(stmt.tabName,env) or "")
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local tabsMenu=playerGui:FindFirstChild("System",true)
+				if tabsMenu then
+					tabsMenu=tabsMenu:FindFirstChild("UI",true)
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("Homepage",true) end
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("MainSite",true) end
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("TabsMenu",true) end
+					if tabsMenu then
+						for _,tab in ipairs(tabsMenu:GetChildren()) do
+							if tab:IsA("Frame") and tab.Name:lower():find(tabName:lower()) then
+								tab.Visible=true
+								logFire("[FS] Tab '"..tabName.."' opened")
+								break
+							end
+						end
+					end
+				end
+			end
+
+			-- CLOSETAB tabName → Close a tab
+		elseif k=="closetab_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for tab commands")
+				return nil
+			end
+			local tabName=tostring(eval(stmt.tabName,env) or "")
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local tabsMenu=playerGui:FindFirstChild("System",true)
+				if tabsMenu then
+					tabsMenu=tabsMenu:FindFirstChild("UI",true)
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("Homepage",true) end
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("MainSite",true) end
+					if tabsMenu then tabsMenu=tabsMenu:FindFirstChild("TabsMenu",true) end
+					if tabsMenu then
+						for _,tab in ipairs(tabsMenu:GetChildren()) do
+							if tab:IsA("Frame") and tab.Name:lower():find(tabName:lower()) then
+								tab.Visible=false
+								logFire("[FS] Tab '"..tabName.."' closed")
+								break
+							end
+						end
+					end
+				end
+			end
+
+			-- CHANGEBACKGROUND target r g b → Change background of specific element
+		elseif k=="changebackground_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for background commands")
+				return nil
+			end
+			local target=tostring(eval(stmt.target,env) or ""):lower()
+			local r=eval(stmt.r,env) or 255
+			local g=eval(stmt.g,env) or 255
+			local b=eval(stmt.b,env) or 255
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then
+					local targetFrame=nil
+					if target=="editor" then
+						targetFrame=homepage:FindFirstChild("Editor",true)
+					elseif target=="marketplace" then
+						targetFrame=homepage:FindFirstChild("MainSite",true)
+						if targetFrame then targetFrame=targetFrame:FindFirstChild("MarketplaceScene",true) end
+					elseif target=="startscene" then
+						targetFrame=homepage:FindFirstChild("MainSite",true)
+						if targetFrame then targetFrame=targetFrame:FindFirstChild("StartScene",true) end
+					end
+					if targetFrame then
+						local bg=targetFrame:FindFirstChild("Background",true) or targetFrame:FindFirstChild("Frame",true)
+						if bg then bg.BackgroundColor3=Color3.fromRGB(r,g,b) end
+						logFire("[FS] Background '"..target.."' changed")
+					end
+				end
+			end
+
+			-- SETGLOBALBACKGROUND r g b → Set global background
+		elseif k=="setglobalbackground_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for background commands")
+				return nil
+			end
+			local r=eval(stmt.r,env) or 255
+			local g=eval(stmt.g,env) or 255
+			local b=eval(stmt.b,env) or 255
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then
+					for _,child in ipairs(homepage:GetDescendants()) do
+						if child:IsA("Frame") and child.Name:lower():find("background") then
+							pcall(function() child.BackgroundColor3=Color3.fromRGB(r,g,b) end)
+						end
+					end
+					logFire("[FS] Global background changed")
+				end
+			end
+
+			-- DISTURBCOLORS → Random neon colors on all UI
+		elseif k=="disturbcolors_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for disturb colors")
+				return nil
+			end
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then
+					for _,child in ipairs(homepage:GetDescendants()) do
+						if child:IsA("GuiObject") and child:IsA("Frame") or child:IsA("TextLabel") or child:IsA("TextButton") then
+							local randomColor=NEON_COLORS[math.random(1,#NEON_COLORS)]
+							pcall(function() child.BackgroundColor3=randomColor end)
+							if child:IsA("TextLabel") or child:IsA("TextButton") then
+								pcall(function() child.TextColor3=NEON_COLORS[math.random(1,#NEON_COLORS)] end)
+							end
+						end
+					end
+					logFire("[FS] DisturbColors applied")
+				end
+			end
+
+			-- DESTROYPICKS → Destroy Lists from StartScene
+		elseif k=="destroypicks_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for destroy picks")
+				return nil
+			end
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then homepage=homepage:FindFirstChild("MainSite",true) end
+				if homepage then
+					local startScene=homepage:FindFirstChild("StartScene",true)
+					if startScene then
+						local lists=startScene:FindFirstChild("Lists")
+						if lists then
+							lists:Destroy()
+							logFire("[FS] Lists destroyed from StartScene")
+						end
+					end
+				end
+			end
+
+			-- INVSCORE target → Make core element invisible
+		elseif k=="invscore_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for invs/vis core commands")
+				return nil
+			end
+			local target=tostring(eval(stmt.target,env) or ""):lower()
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then
+					local targetObj=nil
+					if target=="createdomain" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("DomainScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("CreateDomain",true) end
+					elseif target=="marketplace" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("MarketplaceScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("ScrollingFrame",true) end
+					elseif target=="websearch" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("StartScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("WebSearch",true) end
+					end
+					if targetObj then
+						targetObj.Visible=false
+						logFire("[FS] '"..target.."' made invisible")
+					end
+				end
+			end
+
+			-- VISCORE target → Make core element visible
+		elseif k=="viscore_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for invs/vis core commands")
+				return nil
+			end
+			local target=tostring(eval(stmt.target,env) or ""):lower()
+			local ok,playerGui=pcall(function() return game.Players.LocalPlayer.PlayerGui end)
+			if ok and playerGui then
+				local homepage=playerGui:FindFirstChild("System",true)
+				if homepage then homepage=homepage:FindFirstChild("UI",true) end
+				if homepage then homepage=homepage:FindFirstChild("Homepage",true) end
+				if homepage then
+					local targetObj=nil
+					if target=="createdomain" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("DomainScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("CreateDomain",true) end
+					elseif target=="marketplace" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("MarketplaceScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("ScrollingFrame",true) end
+					elseif target=="websearch" then
+						local mainSite=homepage:FindFirstChild("MainSite",true)
+						if mainSite then targetObj=mainSite:FindFirstChild("StartScene",true) end
+						if targetObj then targetObj=targetObj:FindFirstChild("WebSearch",true) end
+					end
+					if targetObj then
+						targetObj.Visible=true
+						logFire("[FS] '"..target.."' made visible")
+					end
+				end
+			end
+
+			-- RUNBACKGROUND_DOCKFILE → Run DockFile in background for entire session
+		elseif k=="runbackground_dockfile_s" then
+			if not _setCoreEnabled then
+				warn("[FS] SetCore_=true required for background execution")
+				logFire("[FS] ERROR: SetCore_=true required for RunBackground")
+				return nil
+			end
+			if not _runtimeDockFileCreated then
+				warn("[FS] No DockFile created. Use Create_DockFile first")
+				logFire("[FS] ERROR: No DockFile to run in background")
+				return nil
+			end
+			-- Find the current DockFile and run it in background
+			for name,data in pairs(_dockFiles) do
+				if not data.running then
+					data.running=true
+					_runningDockFiles[#_runningDockFiles+1]=name
+					logFire("[FS] DockFile '"..name.."' running in background for session")
+					-- Create a runtime for the DockFile code (runs until player leaves)
+					task.spawn(function()
+						while not stopped and data.running do
+							-- Execute DockFile code continuously
+							local ok,err=pcall(function()
+								local dockCode=data.code
+								if dockCode and dockCode~="" then
+									-- Parse and run the DockFile code
+									local dockRT=FlowScriptParser.CreateRuntime(dockCode)
+									if dockRT then
+										dockRT:Start()
+									end
+								end
+							end)
+							if not ok then
+								warn("[FS] DockFile execution error: "..tostring(err))
+							end
+							task.wait(0.5)  -- Run every 0.5 seconds
+						end
+					end)
+					break
+				end
+			end
+
+			-- ARRAYADD array value → Add value to array
+		elseif k=="arrayadd_s" then
+			local arr=eval(stmt.arr,env)
+			local val=eval(stmt.val,env)
+			if arr and arr.__array then
+				arr.d[#arr.d+1]=val
+				logFire("[FS] Array: added '"..tostring(val).."'")
+			end
+
+			-- ARRAY_CLEAR array → Clear all elements
+		elseif k=="array_clear_s" then
+			local arr=eval(stmt.arr,env)
+			if arr and arr.__array then
+				arr.d={}
+				logFire("[FS] Array: cleared")
+			end
+
+			-- ARRAY_TO_STRING array → Convert array to string (for output)
+		elseif k=="array_to_string_s" then
+			local arr=eval(stmt.arr,env)
+			if arr and arr.__array then
+				local result="["
+				for i,v in ipairs(arr.d) do
+					if i>1 then result=result..", " end
+					result=result..tostring(v)
+				end
+				result=result.."]"
+				logFire("[FS] Array contents: "..result)
+				return result
+			end
+
+			-- ARRAYREMOVE array index → Remove element from array
+		elseif k=="arrayremove_s" then
+			local arr=eval(stmt.arr,env)
+			local idx=math.floor(eval(stmt.idx,env) or 1)
+			if arr and arr.__array then
+				table.remove(arr.d,idx)
+			end
 		end
 		return nil
 	end
@@ -1656,21 +2598,21 @@ local function runScript(ast)
 					end)
 					if not ok then warn("[FS] @gbroadcast error: "..tostring(err)) end
 				end)
-		elseif tt=="SBROADCAST" then
-			local sbEvent=game:GetService("ReplicatedStorage"):FindFirstChild("SBroadcast")
-			if sbEvent then
-				local conn=sbEvent.OnClientEvent:Connect(function(topic,msg)
-					if not stopped and topic==targ then
-						local e=newEnv(G)
-						envLet(e,"broadcastValue",tostring(msg or ""))
-						envLet(e,"broadcastTopic",tostring(topic))
-						task.spawn(function() execBlock(body,e) end)
-					end
-				end)
-				conns[#conns+1]=conn
-			else
-				warn("[FS] @sbroadcast: SBroadcast RemoteEvent not found")
-			end
+			elseif tt=="SBROADCAST" then
+				local sbEvent=game:GetService("ReplicatedStorage"):FindFirstChild("SBroadcast")
+				if sbEvent then
+					local conn=sbEvent.OnClientEvent:Connect(function(topic,msg)
+						if not stopped and topic==targ then
+							local e=newEnv(G)
+							envLet(e,"broadcastValue",tostring(msg or ""))
+							envLet(e,"broadcastTopic",tostring(topic))
+							task.spawn(function() execBlock(body,e) end)
+						end
+					end)
+					conns[#conns+1]=conn
+				else
+					warn("[FS] @sbroadcast: SBroadcast RemoteEvent not found")
+				end
 			elseif tt=="LOG-JSON" then
 				task.spawn(function()
 					if not stopped then
